@@ -13,7 +13,7 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
+                    <div class="home_slider_background" style="background-image:url(/images/home_slider_1.jpg)"></div>
                     <div class="home_slider_content_container">
                         <div class="container">
                             <div class="row">
@@ -31,7 +31,7 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
+                    <div class="home_slider_background" style="background-image:url(/images/home_slider_1.jpg)"></div>
                     <div class="home_slider_content_container">
                         <div class="container">
                             <div class="row">
@@ -49,7 +49,7 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
+                    <div class="home_slider_background" style="background-image:url(/images/home_slider_1.jpg)"></div>
                     <div class="home_slider_content_container">
                         <div class="container">
                             <div class="row">
@@ -132,81 +132,33 @@
 
                     <div class="product_grid">
 
+                        @foreach($products as $product)
+
+                            @php
+                                $image = '';
+                                if(count($product->images) > 0) {
+                                    $image = $product->images[0]['img'];
+                                } else {
+                                    $image = 'no_image.png';
+                                }
+                            @endphp
+
+
                         <!-- Product -->
                         <div class="product">
-                            <div class="product_image"><img src="images/product_1.jpg" alt=""></div>
+                            <div class="product_image"><img src="images/{{$image}}" alt="{{$product->title}}"></div>
                             <div class="product_extra product_new"><a href="categories.html">New</a></div>
                             <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
+                                <div class="product_title"><a href="{{route('showProduct', ['category', $product->id])}}">{{$product->title}}</a></div>
+                                @if($product->new_price != null)
+                                    <div style="text-decoration: line-through">${{$product->price}}</div>
+                                    <div class="product_price">${{$product->new_price}}</div>
+                                @else
+                                    <div class="product_price">${{$product->price}}</div>
+                                @endif
                             </div>
                         </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_2.jpg" alt=""></div>
-                            <div class="product_extra product_sale"><a href="categories.html">Sale</a></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_3.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_4.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_5.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_6.jpg" alt=""></div>
-                            <div class="product_extra product_hot"><a href="categories.html">Hot</a></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_7.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
-
-                        <!-- Product -->
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_8.jpg" alt=""></div>
-                            <div class="product_extra product_sale"><a href="categories.html">Hot</a></div>
-                            <div class="product_content">
-                                <div class="product_title"><a href="product.html">Smart Phone</a></div>
-                                <div class="product_price">$670</div>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
 
@@ -303,4 +255,4 @@
         </div>
     </div>
 
-@endsection('content')
+@endsection()
