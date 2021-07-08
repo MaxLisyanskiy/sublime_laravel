@@ -1,16 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'Product')
+@section('title', $item->alias)
 
 @push('style')
     <link rel="stylesheet" type="text/css" href="/styles/product.css">
     <link rel="stylesheet" type="text/css" href="/styles/product_responsive.css">
 @endpush
-
-@push('scripts')
-    <script src="/js/product.js"></script>
-@endpush
-
 
 @section('content')
 
@@ -229,3 +224,6 @@
 
 @endsection()
 
+@push('scripts')
+    <script src="/js/product.js"></script>
+@endpush
