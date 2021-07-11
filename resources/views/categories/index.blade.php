@@ -3,8 +3,8 @@
 @section('title', $cat->title)
 
 @push('style')
-    <link rel="stylesheet" type="text/css" href="styles/categories.css">
-    <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
+    <link rel="stylesheet" type="text/css" href="/styles/categories.css">
+    <link rel="stylesheet" type="text/css" href="/styles/categories_responsive.css">
 @endpush
 
 @section('content')
@@ -76,7 +76,7 @@
 
                         <!-- Product -->
                             <div class="product">
-                                <div class="product_image"><img src="images/{{$image}}" alt="{{$product->title}}"></div>
+                                <div class="product_image"><img src="/images/{{$image}}" alt="{{$product->title}}"></div>
                                 <div class="product_extra product_new"><a href="{{route('showCategory', $product->category['alias'])}}">{{$product->category['title']}}</a></div>
                                 <div class="product_content">
                                     <div class="product_title"><a href="{{route('showProduct', ['category', $product->id])}}">{{$product->title}}</a></div>
